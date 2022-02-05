@@ -1,11 +1,12 @@
 import { NextPage } from "next";
 import React from "react";
 import AppLayout from "../components/AppLayout";
+import BoardList from "../components/BoardList";
 
 const Board: NextPage = () => {
 	return (
 		<AppLayout>
-			<h1>게시판</h1>
+			<BoardList />
 		</AppLayout>
 	);
 };

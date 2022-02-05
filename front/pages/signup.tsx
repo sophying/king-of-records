@@ -1,11 +1,12 @@
-import { NextPage } from "next";
 import React from "react";
+import type { NextPage } from "next";
 import AppLayout from "../components/AppLayout";
+import Regist from "../components/Regist";
 
 const Signup: NextPage = () => {
 	return (
 		<AppLayout>
-			<h1>회원가입</h1>
+			<Regist />
 		</AppLayout>
 	);
 };

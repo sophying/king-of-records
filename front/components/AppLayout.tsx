@@ -1,27 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Header from "./Header";
-import { Col, Row } from "antd";
+import { Layout } from "antd";
 import styled from "styled-components";
+import HeaderLayout from "./HeaderLayout";
+import FooterLayout from "./FooterLayout";
+
+const { Content } = Layout;
 
 const WrapComponent = styled.div`
 	margin: 0px auto;
 	padding: 0px;
 	width: 80%;
-	height: 90%;
+	height: 650px;
+`;
+
+const ContentStyle = styled(Content)`
+	padding-top: 30px;
+	background-color: #ffffff;
+	height: 100%;
 `;
 
 const AppLayout = ({ children }) => {
 	return (
 		<>
-			<Header />
+			<HeaderLayout />
 			<WrapComponent>
-				<Row gutter={8}>
-					<Col xs={24} md={12}>
-						{children}
-					</Col>
-				</Row>
+				<ContentStyle>{children}</ContentStyle>
 			</WrapComponent>
+			<FooterLayout />
 		</>
 	);
 };

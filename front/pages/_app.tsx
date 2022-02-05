@@ -9,6 +9,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import PropTypes from "prop-types";
 import Head from "next/head";
+import "../components/style/_app.css";
 
 const KingOfRecords = ({ Component }) => {
 	return (
@@ -17,7 +18,9 @@ const KingOfRecords = ({ Component }) => {
 				<meta charSet="utf-8" />
 				<title>KingOfRecords</title>
 			</Head>
-			<Component />
+			<body>
+				<Component />
+			</body>
 		</div>
 	);
 };
