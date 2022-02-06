@@ -4,9 +4,11 @@ import AppLayout from "../components/AppLayout";
 
 const Home: NextPage = () => {
 	return (
-		<AppLayout>
-			<h1>Hello King Of Records</h1>
-		</AppLayout>
+		<>
+			<AppLayout>
+				<h1>Hello King Of Records</h1>
+			</AppLayout>
+		</>
 	);
 };
 

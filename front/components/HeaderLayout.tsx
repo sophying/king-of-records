@@ -12,14 +12,17 @@ const HeaderStyle = styled(Header)`
 	width: 80%;
 `;
 
-const AvatarStyle = styled.span`
-	float: right;
+const AvatarStyle = styled.div`
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 150px;
 `;
 
 const HeaderLayout = () => {
 	return (
 		<HeaderStyle>
-			<Menu mode="horizontal">
+			<Menu mode="horizontal" style={{ backgroundColor: "#c5cae9" }}>
 				<Menu.Item>
 					<Link href="/">Home</Link>
 				</Menu.Item>
@@ -29,11 +32,14 @@ const HeaderLayout = () => {
 				<Menu.Item>
 					<Link href="/signup">회원가입</Link>
 				</Menu.Item>
-				<Menu.Item>
-					<AvatarStyle>
-						<Avatar icon={<UserOutlined />} />
-					</AvatarStyle>
-				</Menu.Item>
+				<AvatarStyle>
+					<Menu.Item>
+						<Avatar
+							style={{ backgroundColor: "transparent", color: "black" }}
+							icon={<UserOutlined />}
+						/>
+					</Menu.Item>
+				</AvatarStyle>
 			</Menu>
 		</HeaderStyle>
 	);
