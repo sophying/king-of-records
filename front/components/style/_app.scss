@@ -1,0 +1,25 @@
+// Header
+.header {
+	width: 100%;
+	margin: 0px auto;
+	background-color: #333;
+}
+
+.menu-bar {
+	background-color: #333;
+	border: none;
+}
+.menu-item:hover {
+	border: none;
+	border-bottom: 3px solid #eee088 !important;
+}
+.menu-item-link {
+	color: #fff !important;
+	border-bottom: none;
+}
+.menu-item-avatar {
+	background-color: "transparent";
+	color: "black";
+}
+
+//

@@ -9,7 +9,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import PropTypes from "prop-types";
 import Head from "next/head";
-import "../components/style/_app.css";
+import "../components/style/_app.scss";
 
 const KingOfRecords = ({ Component }) => {
 	return (

@@ -1,7 +1,10 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Form, Input, Button } from "antd";
 import styled from "styled-components";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import useInput from "../hook/useInput";
+import { string } from "prop-types";
 
 const FormStyle = styled(Form)`
 	margin: 0 auto;
@@ -25,35 +28,37 @@ const ButtonStyle = styled.div`
 const Regist = () => {
 	return (
 		<>
-			<FormStyle
-				labelCol={{ span: 4 }}
-				wrapperCol={{ span: 10 }}
-				layout="horizontal"
-			>
-				<FormItemStyle label="아이디">
-					<Input name="user_id" />
-				</FormItemStyle>
-				<FormItemStyle label="이메일">
-					<Input name="email" type="email" required />
-				</FormItemStyle>
-				<FormItemStyle label="비밀번호">
-					<Input name="password" type="password" />
-				</FormItemStyle>
-				<FormItemStyle label="이름">
-					<Input name="name" />
-				</FormItemStyle>
-				<FormItemStyle label="닉네임">
-					<Input name="nick_name" />
-				</FormItemStyle>
-				<ButtonStyle>
-					<Button htmlType="submit" style={{ marginRight: "10px" }}>
-						<Link href={"/"}>취소하기</Link>
-					</Button>
-					<Button type="primary" htmlType="submit">
-						가입하기
-					</Button>
-				</ButtonStyle>
-			</FormStyle>
+			<div>
+				<FormStyle
+					labelCol={{ span: 2 }}
+					wrapperCol={{ span: 10 }}
+					layout="horizontal"
+				>
+					<FormItemStyle label="아이디">
+						<Input name="user_id" />
+					</FormItemStyle>
+					<FormItemStyle label="이메일">
+						<Input name="email" type="email" required />
+					</FormItemStyle>
+					<FormItemStyle label="비밀번호">
+						<Input name="password" type="password" />
+					</FormItemStyle>
+					<FormItemStyle label="이름">
+						<Input name="name" />
+					</FormItemStyle>
+					<FormItemStyle label="닉네임">
+						<Input name="nick_name" />
+					</FormItemStyle>
+					<ButtonStyle>
+						<Button style={{ marginRight: "10px" }}>
+							<Link href={"/"}>취소하기</Link>
+						</Button>
+						<Button type="primary" htmlType="submit">
+							가입하기
+						</Button>
+					</ButtonStyle>
+				</FormStyle>
+			</div>
 		</>
 	);
 };

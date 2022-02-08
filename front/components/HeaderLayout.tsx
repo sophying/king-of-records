@@ -8,6 +8,7 @@ const { Header } = Layout;
 
 const HeaderStyle = styled(Header)`
 	margin: 0px auto;
+	text-align: center;
 	padding: 0px;
 	width: 80%;
 `;
@@ -21,27 +22,38 @@ const AvatarStyle = styled.div`
 
 const HeaderLayout = () => {
 	return (
-		<HeaderStyle>
-			<Menu mode="horizontal" style={{ backgroundColor: "#c5cae9" }}>
-				<Menu.Item>
-					<Link href="/">Home</Link>
-				</Menu.Item>
-				<Menu.Item>
-					<Link href="/board">게시판</Link>
-				</Menu.Item>
-				<Menu.Item>
-					<Link href="/signup">회원가입</Link>
-				</Menu.Item>
-				<AvatarStyle>
-					<Menu.Item>
-						<Avatar
-							style={{ backgroundColor: "transparent", color: "black" }}
-							icon={<UserOutlined />}
-						/>
-					</Menu.Item>
-				</AvatarStyle>
-			</Menu>
-		</HeaderStyle>
+		<>
+			<div className="header">
+				<HeaderStyle>
+					<Menu mode="horizontal" className="menu-bar">
+						<Menu.Item className="menu-item">
+							<Link href="/">
+								<a className="menu-item-link">Home</a>
+							</Link>
+						</Menu.Item>
+						<Menu.Item className="menu-item">
+							<Link href="/board">
+								<a className="menu-item-link">게시판</a>
+							</Link>
+						</Menu.Item>
+						<Menu.Item className="menu-item">
+							<Link href="/signup">
+								<a className="menu-item-link">회원가입</a>
+							</Link>
+						</Menu.Item>
+						<AvatarStyle>
+							<Menu.Item className="menu-item">
+								<Avatar
+									className="menu-item-avatar menu-item-link"
+									style={{ backgroundColor: "transparent", color: "black" }}
+									icon={<UserOutlined />}
+								/>
+							</Menu.Item>
+						</AvatarStyle>
+					</Menu>
+				</HeaderStyle>
+			</div>
+		</>
 	);
 };
 

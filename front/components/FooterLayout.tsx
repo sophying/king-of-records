@@ -7,8 +7,8 @@ const { Footer } = Layout;
 const FooterStyle = styled(Footer)`
 	margin: 0px auto;
 	padding: 10px;
-	width: 80%;
-	background-color: #c5cae9;
+	width: 100%;
+	background-color: #333;
 	text-align: center;
 `;
 
