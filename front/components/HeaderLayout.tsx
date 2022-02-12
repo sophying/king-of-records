@@ -1,5 +1,5 @@
-import React from "react";
-import { Menu, Avatar, Layout } from "antd";
+import React, { useCallback } from "react";
+import { Menu, Avatar, Layout, Popover, Select } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import styled from "styled-components";
@@ -21,6 +21,12 @@ const AvatarStyle = styled.div`
 `;
 
 const HeaderLayout = () => {
+	const onClickMyInfo = useCallback(() => {
+		console.log("내정보");
+	}, []);
+	const onClickLogout = useCallback(() => {
+		console.log("로그아웃");
+	}, []);
 	return (
 		<>
 			<div className="header">
@@ -43,11 +49,22 @@ const HeaderLayout = () => {
 						</Menu.Item>
 						<AvatarStyle>
 							<Menu.Item className="menu-item">
-								<Avatar
-									className="menu-item-avatar menu-item-link"
-									style={{ backgroundColor: "transparent", color: "black" }}
-									icon={<UserOutlined />}
-								/>
+								<Popover
+									trigger="click"
+									placement="bottom"
+									content={
+										<>
+											<div onClick={onClickMyInfo}>내정보</div>
+											<div onClick={onClickLogout}>로그아웃</div>
+										</>
+									}
+								>
+									<Avatar
+										className="menu-item-avatar menu-item-link"
+										style={{ backgroundColor: "transparent", color: "black" }}
+										icon={<UserOutlined />}
+									/>
+								</Popover>
 							</Menu.Item>
 						</AvatarStyle>
 					</Menu>
