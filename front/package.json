@@ -9,11 +9,12 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "proxy":"",
+  "proxy": "",
   "author": "kimHyeRyun",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "antd": "^4.18.5",
+    "axios": "^0.25.0",
     "next": "12.0.9",
     "next-redux-wrapper": "^6.0.2",
     "node-sass": "^6.0.1",
@@ -21,6 +22,7 @@
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
+    "redux-saga": "^1.1.3",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3"
   },
