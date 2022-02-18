@@ -1,5 +1,3 @@
-import React from "react";
-
 export const initialState = {
 	me: null,
 	signUpLoading: false,
@@ -31,14 +29,20 @@ export const signUpRequestAction = (data: any) => {
 	};
 };
 
+export const logoutRequestAction = () => {
+	return {
+		type: LOG_OUT_REQUEST,
+	};
+};
+
 // Dummy
 const dummyUser = (data: any) => ({
 	...data,
-	userId: "hello",
-	userEmail: "hello@naver.com",
-	userPassword: "1111",
-	userName: "lovely",
-	userNickname: "cucu",
+	userId: "",
+	userEmail: "",
+	userPassword: "",
+	userName: "",
+	userNickname: "",
 });
 
 const reducer = (state = initialState, action: any) => {
@@ -50,6 +54,43 @@ const reducer = (state = initialState, action: any) => {
 				signUpLoading: true,
 				signUpError: null,
 				signUpDone: false,
+			};
+		case SIGN_UP_SUCCESS:
+			console.log("I am reducer-signUp-Success");
+			return {
+				...state,
+				signUpLoading: false,
+				signUpDone: true,
+			};
+		case SIGN_UP_FAILURE:
+			console.log("i am reducer-signUp-failure");
+			return {
+				...state,
+				signUpLoading: false,
+				signUpError: action.error,
+			};
+		case LOG_IN_REQUEST:
+			console.log(" i am reducer-login-request");
+			return {
+				...state,
+				logInLoading: true,
+				logInError: null,
+				logInDone: false,
+			};
+		case LOG_IN_SUCCESS:
+			console.log(" i am reducer-login-success");
+			return {
+				...state,
+				logInLoading: false,
+				logInDone: true,
+				me: dummyUser(action.data),
+			};
+		case LOG_IN_FAILURE:
+			console.log(" i am reducer-login-failure");
+			return {
+				...state,
+				logInLoading: false,
+				logInError: action.error,
 			};
 		default:
 			return state;

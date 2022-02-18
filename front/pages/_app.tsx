@@ -10,6 +10,8 @@ import "antd/dist/antd.css";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import "../components/style/_app.scss";
+import "../components/style/login.scss";
+import wrapper from "../store/configStore";
 
 const KingOfRecords = ({ Component }) => {
 	return (
@@ -29,4 +31,4 @@ KingOfRecords.propTypes = {
 	Component: PropTypes.elementType.isRequired,
 };
 
-export default KingOfRecords;
+export default wrapper.withRedux(KingOfRecords);
