@@ -1,14 +1,23 @@
+* {
+	box-sizing: border-box;
+}
+
 .login-box {
 	position: absolute;
-	right: 200px;
-	top: 280px;
+	top: 140px;
+	left: 260px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 
 	.login-btn {
-		width: 500px;
-		height: 90px;
-		border-radius: 20px;
+		position: relative;
+		left: 100px;
 		background-color: #006064;
 		color: #fff;
-		font-size: 30px;
+	}
+
+	.login-input {
+		width: 400px;
 	}
 }

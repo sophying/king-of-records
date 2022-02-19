@@ -21,6 +21,11 @@ export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
 export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 
+interface loginData {
+	user_id: any;
+	password: any;
+}
+
 //ACTION
 export const signUpRequestAction = (data: any) => {
 	return {
@@ -29,6 +34,12 @@ export const signUpRequestAction = (data: any) => {
 	};
 };
 
+export const logInRequestAction = (data: loginData) => {
+	return {
+		type: LOG_IN_REQUEST,
+		data,
+	};
+};
 export const logoutRequestAction = () => {
 	return {
 		type: LOG_OUT_REQUEST,
@@ -38,11 +49,13 @@ export const logoutRequestAction = () => {
 // Dummy
 const dummyUser = (data: any) => ({
 	...data,
-	userId: "",
-	userEmail: "",
-	userPassword: "",
-	userName: "",
-	userNickname: "",
+	me: {
+		userId: "",
+		userEmail: "",
+		userPassword: "",
+		userName: "",
+		userNickname: "",
+	},
 });
 
 const reducer = (state = initialState, action: any) => {
