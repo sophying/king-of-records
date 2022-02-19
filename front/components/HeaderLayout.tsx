@@ -4,6 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { useSelector } from "react-redux";
 
 const { Header } = Layout;
 
@@ -18,10 +19,11 @@ const AvatarStyle = styled.div`
 	display: inline-block;
 	position: absolute;
 	top: 0;
-	right: 150px;
+	right: 200px;
 `;
 
 const HeaderLayout = () => {
+	const { me } = useSelector((state: any) => state?.user);
 	const router = useRouter();
 	const onClickMyInfo = useCallback(() => {
 		console.log("내정보");
@@ -79,6 +81,19 @@ const HeaderLayout = () => {
 								</Popover>
 							</Menu.Item>
 						</AvatarStyle>
+						<div className="user-nick">
+							{me && (
+								<>
+									<span className="user-info">
+										<input
+											type="text"
+											value={me?.userId?.split("")[0]}
+											disabled
+										></input>
+									</span>
+								</>
+							)}
+						</div>
 					</Menu>
 				</HeaderStyle>
 			</div>

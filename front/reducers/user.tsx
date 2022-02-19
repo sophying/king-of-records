@@ -22,7 +22,7 @@ export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 
 interface loginData {
-	user_id: any;
+	userId: any;
 	password: any;
 }
 
@@ -48,14 +48,8 @@ export const logoutRequestAction = () => {
 
 // Dummy
 const dummyUser = (data: any) => ({
-	...data,
-	me: {
-		userId: "",
-		userEmail: "",
-		userPassword: "",
-		userName: "",
-		userNickname: "",
-	},
+	userId: data.user_id,
+	password: data.password,
 });
 
 const reducer = (state = initialState, action: any) => {
@@ -92,6 +86,7 @@ const reducer = (state = initialState, action: any) => {
 			};
 		case LOG_IN_SUCCESS:
 			console.log(" i am reducer-login-success");
+			console.log(action.data);
 			return {
 				...state,
 				logInLoading: false,

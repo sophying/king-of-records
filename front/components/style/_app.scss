@@ -5,6 +5,7 @@
 	width: 100%;
 	margin: 0px auto;
 	background-color: #333;
+	display: inline-block;
 }
 
 .menu-bar {
@@ -13,7 +14,7 @@
 }
 .menu-item:hover {
 	border: none;
-	border-bottom: 3px solid #eee088 !important;
+	// border-bottom: 3px solid #eee088 !important;
 }
 .menu-item-link {
 	color: #fff !important;

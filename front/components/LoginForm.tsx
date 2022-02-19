@@ -8,24 +8,27 @@ import BoardList from "./BoardList";
 const LoginForm = () => {
 	const dispatch = useDispatch();
 	const history = useRouter();
-	const { me } = useSelector((state: any) => state.user.me);
-	const [userId, setUserId] = useState<string>("");
+	const { me } = useSelector((state: any) => state.user);
+	const [userId, setUserId] = useState<any>("");
 	const onChangeUserId = useCallback(
 		(e) => {
 			console.log(e.target.value);
+			setUserId(e.target.value);
 		},
 		[userId],
 	);
-	const [password, setPassword] = useState<string>("");
+	const [password, setPassword] = useState<any>("");
 	const onChangePassword = useCallback(
 		(e) => {
 			console.log(e.target.value);
+			setPassword(password);
 		},
 		[password],
 	);
 
 	const onFinish = (values: any) => {
-		dispatch(logInRequestAction({}));
+		dispatch(logInRequestAction(values));
+		console.log(values.userId, values.password);
 		console.log("Success:", values);
 		// history.push("/board");
 	};
@@ -36,7 +39,9 @@ const LoginForm = () => {
 	return (
 		<>
 			{me ? (
-				<BoardList />
+				<>
+					<BoardList />
+				</>
 			) : (
 				<div className="login-box">
 					<Form
@@ -54,7 +59,7 @@ const LoginForm = () => {
 							name="user_id"
 							rules={[{ required: true, message: "아이디를 입력해주세요." }]}
 						>
-							<Input onChange={onChangeUserId} />
+							<Input onChange={onChangeUserId} value={userId} />
 						</Form.Item>
 
 						<Form.Item
@@ -63,7 +68,7 @@ const LoginForm = () => {
 							name="password"
 							rules={[{ required: true, message: "비밀번호를 입력해주세요." }]}
 						>
-							<Input.Password onChange={onChangePassword} />
+							<Input.Password onChange={onChangePassword} value={password} />
 						</Form.Item>
 
 						<Form.Item
