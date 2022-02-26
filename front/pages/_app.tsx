@@ -13,10 +13,12 @@ import "../components/style/_app.scss";
 import "../components/style/login.scss";
 import "../components/style/user.scss";
 import wrapper from "../store/configStore";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import BoardList from "../components/BoardList";
 
 const KingOfRecords = ({ Component }) => {
 	return (
-		<div>
+		<>
 			<Head>
 				<meta charSet="utf-8" />
 				<title>KingOfRecords</title>
@@ -24,7 +26,7 @@ const KingOfRecords = ({ Component }) => {
 			<body>
 				<Component />
 			</body>
-		</div>
+		</>
 	);
 };
 

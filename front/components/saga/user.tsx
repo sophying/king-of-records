@@ -17,12 +17,13 @@ function signUpAPI() {
 	return axios.post("/api/signup", data);
 }
 
-function* signUp() {
+function* signUp(action: any) {
 	console.log("UserSaga-Signup");
 	try {
 		yield delay(1000);
 		yield put({
 			type: SIGN_UP_SUCCESS,
+			data: action.data,
 		});
 	} catch (error: any) {
 		yield put({

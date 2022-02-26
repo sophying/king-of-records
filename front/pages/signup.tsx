@@ -1,14 +1,12 @@
 import React, { useCallback, useState } from "react";
 import type { NextPage } from "next";
-import { Form, Input, Button } from "antd";
+import { useRouter } from "next/router";
+import { Form, Input, Button, Modal } from "antd";
 import styled from "styled-components";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import useInput from "../hooks/useInput";
 import AppLayout from "../components/AppLayout";
 import { signUpRequestAction } from "../reducers/user";
-import BoardList from "../components/BoardList";
-import LoginForm from "../components/LoginForm";
 
 const FormStyle = styled(Form)`
 	margin: 0 auto;
@@ -37,14 +35,27 @@ const ErrorStyle = styled.div`
 
 const Signup: NextPage = () => {
 	const dispatch = useDispatch();
-	const { signUpLoading, signUpDone } = useSelector(
-		(state: any) => state.user.signUpLoading,
-	);
-	const [userId, onChangeUserId] = useInput("");
-	const [userEmail, onChangeUserEmail] = useInput("");
-	const [userPassword, onChangePassword] = useInput("");
-	const [userName, onChangeUserName] = useInput("");
-	const [userNickname, onChangeUserNickname] = useInput("");
+	const { signUpLoading, signUpDone } = useSelector((state: any) => state.user);
+	const [userId, setUserId] = useState<any>("");
+	const onChangeUserId = useCallback((e) => {
+		setUserId(e.target.value);
+	}, []);
+	const [userEmail, setUserEmail] = useState<string>("");
+	const onChangeUserEmail = useCallback((e) => {
+		setUserEmail(e.target.value);
+	}, []);
+	const [userPassword, setUserPassword] = useState<any>("");
+	const onChangePassword = useCallback((e) => {
+		setUserPassword(e.target.value);
+	}, []);
+	const [userName, setUserName] = useState<string>("");
+	const onChangeUserName = useCallback((e) => {
+		setUserName(e.target.value);
+	}, []);
+	const [userNickname, setUserNickname] = useState<string>("");
+	const onChangeUserNickname = useCallback((e) => {
+		setUserNickname(e.target.value);
+	}, []);
 
 	const [passwordError, setPasswordError] = useState(false);
 	const [passwordCheck, setPasswordCheck] = useState("");
@@ -55,6 +66,14 @@ const Signup: NextPage = () => {
 		},
 		[userPassword],
 	);
+	const router = useRouter();
+	const success = () => {
+		Modal.success({
+			content: "회원가입 성공",
+		});
+
+		router.push("/");
+	};
 	const onSubmit = useCallback(() => {
 		console.log(userId, userEmail, userPassword, userName, userNickname);
 		dispatch(
@@ -66,11 +85,18 @@ const Signup: NextPage = () => {
 				userNickname,
 			}),
 		);
-		// dispatch({
-		// 	type: SIGN_UP_REQUEST,
-		// 	data: { userId, userEmail, userPassword, userName, userNickname },
-		// });
-	}, [userId, userEmail, userPassword]);
+
+		switch (signUpDone) {
+			case true:
+				success();
+				console.log("success");
+				break;
+
+			default:
+				break;
+		}
+	}, [userId, userEmail, userPassword, userName, userNickname]);
+
 	return (
 		<>
 			<AppLayout>

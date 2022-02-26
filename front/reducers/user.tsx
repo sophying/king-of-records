@@ -1,3 +1,5 @@
+import { string } from "prop-types";
+
 export const initialState = {
 	me: null,
 	signUpLoading: false,
@@ -26,8 +28,16 @@ interface loginData {
 	password: any;
 }
 
+interface signUpData {
+	userId: any;
+	userEmail: string;
+	userPassword: any;
+	userName: string;
+	userNickname: string;
+}
+
 //ACTION
-export const signUpRequestAction = (data: any) => {
+export const signUpRequestAction = (data: signUpData) => {
 	return {
 		type: SIGN_UP_REQUEST,
 		data,
@@ -47,9 +57,18 @@ export const logoutRequestAction = () => {
 };
 
 // Dummy
-const dummyUser = (data: any) => ({
-	userId: data.user_id,
-	password: data.password,
+// const dummyUser = (data: any) => ({
+// 	userId: data.user_id,
+// 	password: data.password,
+// });
+
+// sign Dummy
+const dummyUser = (data: signUpData) => ({
+	userId: data.userId,
+	userEmail: data.userEmail,
+	userPassword: data.userPassword,
+	userName: data.userName,
+	userNickname: data.userNickname,
 });
 
 const reducer = (state = initialState, action: any) => {
