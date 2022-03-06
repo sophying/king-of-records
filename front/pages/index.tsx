@@ -1,24 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import { Button } from "antd";
 import AppLayout from "../components/AppLayout";
 import LoginForm from "../components/LoginForm";
+import BoardList from "../components/BoardList";
 
 const Home: NextPage = () => {
+	const { logInDone } = useSelector((state: any) => state.user);
 	return (
 		<>
 			<AppLayout>
-				<div className="login-box">
-					{/* <Button
-						className="login-btn"
-						size="large"
-						onClick={() => router.push("/login")}
-					>
-						로그인하기
-					</Button> */}
+				{logInDone ? ( //
+					<BoardList />
+				) : (
 					<LoginForm />
-				</div>
+				)}
 			</AppLayout>
 		</>
 	);

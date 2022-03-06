@@ -1,7 +1,7 @@
 import { string } from "prop-types";
 
 export const initialState = {
-	me: null,
+	me: {},
 	signUpLoading: false,
 	signUpDone: false,
 	signUpError: null,

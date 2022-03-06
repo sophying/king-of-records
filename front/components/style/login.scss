@@ -2,14 +2,15 @@
 	box-sizing: border-box;
 }
 
-.login-box {
-	position: absolute;
-	top: 140px;
-	left: 260px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-
+.main-box {
+	.login-item {
+		position: absolute;
+		top: 250px;
+		left: 450px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 	.login-btn {
 		position: relative;
 		left: 100px;

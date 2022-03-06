@@ -1,9 +1,70 @@
 // body
 
-// Header
-.header {
+// Header- company
+.header-menu-wrapper {
 	width: 100%;
-	margin: 0px auto;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	background-color: #333;
+}
+.ant-menu-overflow-item {
+	text-decoration: none;
+	background-color: #333 !important;
+	color: #fff;
+}
+
+.header-menu {
+	margin: 0 auto;
+	padding: 0;
+	width: 80%;
+	display: inline-flex;
+	justify-content: space-between;
+}
+
+.header-menu-link-left {
+	line-height: 60px;
+}
+
+.header-menu-link-right {
+	line-height: 60px;
+}
+
+a {
+	color: #fff !important;
+	border-bottom: none;
+}
+
+.header-menu-link {
+	width: 90px;
+	height: 60px;
+	display: inline-block;
+	line-height: 60px;
+	font-weight: bold;
+	font-size: large;
+	text-decoration: none;
+	color: #fff;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	&.avatar {
+		color: #fff !important;
+		font-size: 300px;
+	}
+}
+
+.header-menu-link:hover {
+	margin: 0;
+	color: #54d5dad2 !important;
+	border: none;
+}
+
+// header1
+.header {
+	margin: 0 auto;
+	padding: 0;
+	width: 80%;
+	display: inline-flex;
+	justify-content: space-between;
 	background-color: #333;
 	display: inline-block;
 }
