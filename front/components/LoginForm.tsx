@@ -4,11 +4,12 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { logInRequestAction } from "../reducers/user";
 import BoardList from "./BoardList";
+import UserData from "../data/userData";
 
 const LoginForm = () => {
 	const dispatch = useDispatch();
 	const history = useRouter();
-	const [userId, setUserId] = useState<any>("");
+	const [userId, setUserId] = useState<string>("");
 	const onChangeUserId = useCallback(
 		(e) => {
 			console.log(e.target.value);
@@ -16,7 +17,7 @@ const LoginForm = () => {
 		},
 		[userId],
 	);
-	const [password, setPassword] = useState<any>("");
+	const [password, setPassword] = useState<string>("");
 	const onChangePassword = useCallback(
 		(e) => {
 			console.log(e.target.value);
@@ -26,10 +27,18 @@ const LoginForm = () => {
 	);
 
 	const onFinish = (values: any) => {
-		dispatch(logInRequestAction(values));
-		console.log(values.userId, values.password);
-		console.log("Success:", values);
-		// history.push("/board");
+		const userCheck = UserData.filter((user) => {
+			return (
+				user.userEmail == values.user_id && //
+				user.userPassword == values.password
+			);
+		});
+
+		if (userCheck.length > 0) {
+			dispatch(logInRequestAction(values));
+		} else {
+			alert("이메일 또는 비밀번호를 다시 입력해주세요.");
+		}
 	};
 
 	const onFinishFailed = (errorInfo: any) => {
@@ -51,9 +60,13 @@ const LoginForm = () => {
 						className="login-input"
 						label="아이디"
 						name="user_id"
-						rules={[{ required: true, message: "아이디를 입력해주세요." }]}
+						rules={[{ required: true, message: "이메일을 입력해주세요." }]}
 					>
-						<Input onChange={onChangeUserId} value={userId} />
+						<Input
+							onChange={onChangeUserId}
+							value={userId}
+							placeholder="이메일을 입력해주세요."
+						/>
 					</Form.Item>
 
 					<Form.Item

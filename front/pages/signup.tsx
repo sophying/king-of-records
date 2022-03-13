@@ -36,15 +36,10 @@ const ErrorStyle = styled.div`
 `;
 
 const Signup: NextPage = () => {
-	const router = useRouter();
+	const history = useRouter();
 	const dispatch = useDispatch();
 	const [signUpDone, setSignUpDone] = useState<boolean>(false);
 	const { signUpLoading } = useSelector((state: any) => state?.user);
-	// switch (signUpDone) {
-	// 	case true:
-	// 		router.push("/");
-	// 		return !signUpDone;
-	// }
 	const [userId, onChangeUserId] = useInput("");
 	const [userEmail, onChangeUserEmail] = useInput("");
 	const [userPassword, onChangePassword] = useInput("");
@@ -62,11 +57,13 @@ const Signup: NextPage = () => {
 	);
 
 	const onSubmit = (values: any) => {
-		// console.log(userId, userEmail, userPassword, userName, userNickname);
+		const value = values.user_email;
 		const userCheck = UserData.filter((user) => {
-			user.userEmail == values.email;
+			// user.userEmail === values.user_email;
+			return user.userEmail == value;
 		});
-		if (userCheck.length > 1) {
+
+		if (userCheck.length > 0) {
 			alert("이미 사용자가 존재합니다.");
 		} else {
 			dispatch(signUpRequestAction(values));
@@ -75,7 +72,7 @@ const Signup: NextPage = () => {
 	};
 
 	const onSignSuccess = () => {
-		router.push("/");
+		history.push("/");
 	};
 
 	return (
@@ -98,17 +95,15 @@ const Signup: NextPage = () => {
 						wrapperCol={{ span: 8 }}
 						layout="horizontal"
 					>
-						<FormItemStyle label="아이디">
+						<FormItemStyle label="아이디" name="user_id">
 							<Input
-								name="user_id"
 								value={userId}
 								onChange={onChangeUserId}
 								placeholder="아이디를 입력하세요."
 							/>
 						</FormItemStyle>
-						<FormItemStyle label="이메일">
+						<FormItemStyle label="이메일" name="user_email">
 							<Input
-								name="email"
 								type="email"
 								required
 								value={userEmail}
@@ -116,18 +111,16 @@ const Signup: NextPage = () => {
 								placeholder="test@test.com"
 							/>
 						</FormItemStyle>
-						<FormItemStyle label="비밀번호">
+						<FormItemStyle label="비밀번호" name="user_password">
 							<Input
-								name="password"
 								type="password"
 								value={userPassword}
 								onChange={onChangePassword}
 								placeholder="비밀번호를 입력하세요."
 							/>
 						</FormItemStyle>
-						<FormItemStyle label="비밀번호체크">
+						<FormItemStyle label="비밀번호체크" name="user-password-check">
 							<Input
-								name="user-password-check"
 								type="password"
 								required
 								value={passwordCheck}
@@ -136,15 +129,11 @@ const Signup: NextPage = () => {
 							/>
 							{passwordError && <ErrorStyle>패스워드가 다릅니다.</ErrorStyle>}
 						</FormItemStyle>
-						<FormItemStyle label="이름">
-							<Input name="name" value={userName} onChange={onChangeUserName} />
+						<FormItemStyle label="이름" name="user_name">
+							<Input value={userName} onChange={onChangeUserName} />
 						</FormItemStyle>
-						<FormItemStyle label="닉네임">
-							<Input
-								name="nick_name"
-								value={userNickname}
-								onChange={onChangeUserNickname}
-							/>
+						<FormItemStyle label="닉네임" name="nick_name">
+							<Input value={userNickname} onChange={onChangeUserNickname} />
 						</FormItemStyle>
 						<ButtonStyle>
 							<Button

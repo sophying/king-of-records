@@ -3,7 +3,7 @@ import { string } from "prop-types";
 export const initialState = {
 	me: {},
 	signUpLoading: false,
-	signUpDone: false,
+	// signUpDone: false,
 	signUpError: null,
 	loginLoading: false,
 	loginDone: false,
@@ -79,14 +79,14 @@ const reducer = (state = initialState, action: any) => {
 				...state,
 				signUpLoading: true,
 				signUpError: null,
-				signUpDone: false,
+				// signUpDone: false,
 			};
 		case SIGN_UP_SUCCESS:
 			console.log("I am reducer-signUp-Success");
 			return {
 				...state,
 				signUpLoading: false,
-				signUpDone: true,
+				// signUpDone: true,
 			};
 		case SIGN_UP_FAILURE:
 			console.log("i am reducer-signUp-failure");

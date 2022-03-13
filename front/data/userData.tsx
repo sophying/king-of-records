@@ -8,7 +8,7 @@ const UserData = [
 	},
 	{
 		userId: "2",
-		userEmail: "hello@naver.com",
+		userEmail: "2njoybliss@gmail.com",
 		userPassword: "123",
 		userName: "world",
 		userNickname: "tomy",
