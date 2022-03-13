@@ -24,14 +24,14 @@ export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 export const LOG_OUT_FAILURE = "LOG_OUT_FAILURE";
 
 interface loginData {
-	userId: any;
-	password: any;
+	userId: string;
+	password: string;
 }
 
 interface signUpData {
-	userId: any;
+	userId: string;
 	userEmail: string;
-	userPassword: any;
+	userPassword: string;
 	userName: string;
 	userNickname: string;
 }
