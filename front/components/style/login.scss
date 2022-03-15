@@ -7,18 +7,36 @@
 		position: absolute;
 		top: 250px;
 		left: 450px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		display: inline-block;
 	}
 	.login-btn {
 		position: relative;
-		left: 100px;
+		text-align: center;
+		align-items: center;
 		background-color: #006064;
 		color: #fff;
+	}
+	.button-box {
+		margin: 0 auto;
+		padding: 0;
+		margin-left: 140px;
+		display: inline-block;
+	}
+	.button-login {
+		float: left;
+	}
+
+	.button-signup {
+		float: right;
 	}
 
 	.login-input {
 		width: 400px;
+	}
+
+	.login-Error-msg {
+		position: relative;
+		text-align: center;
+		align-items: center;
 	}
 }

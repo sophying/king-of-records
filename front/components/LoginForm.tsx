@@ -44,6 +44,12 @@ const LoginForm = () => {
 	const onFinishFailed = (errorInfo: any) => {
 		console.log("Failed:", errorInfo);
 	};
+
+	// 회원가입 버튼
+	const goSignup = () => {
+		history.push("/signup");
+	};
+
 	return (
 		<div className="main-box">
 			<div className="login-item">
@@ -77,20 +83,26 @@ const LoginForm = () => {
 					>
 						<Input.Password onChange={onChangePassword} value={password} />
 					</Form.Item>
-
-					<Form.Item
-						name="remember"
-						valuePropName="checked"
-						wrapperCol={{ offset: 8, span: 16 }}
-					>
-						<Checkbox>Remember me</Checkbox>
-					</Form.Item>
-
-					<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-						<Button type="primary" htmlType="submit" className="login-btn">
-							로그인
-						</Button>
-					</Form.Item>
+					<div className="button-box">
+						<div className="button-login">
+							<Form.Item wrapperCol={{ offset: 8, span: 8 }}>
+								<Button type="primary" htmlType="submit" className="login-btn">
+									로그인
+								</Button>
+							</Form.Item>
+						</div>
+						<div className="button-signup">
+							<Form.Item wrapperCol={{ offset: 8, span: 8 }}>
+								<Button
+									type="primary"
+									onClick={goSignup}
+									className="login-btn signup-btn"
+								>
+									회원가입
+								</Button>
+							</Form.Item>
+						</div>
+					</div>
 				</Form>
 			</div>
 		</div>
