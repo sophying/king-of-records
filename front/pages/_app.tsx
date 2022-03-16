@@ -12,6 +12,7 @@ import Head from "next/head";
 import "../components/style/_app.scss";
 import "../components/style/login.scss";
 import "../components/style/user.scss";
+import "../components/style/board.scss";
 import wrapper from "../store/configStore";
 
 const KingOfRecords = ({ Component }) => {
